@@ -17,10 +17,10 @@ $BODY$
     , '{}')::jsonb;
 $BODY$
 LANGUAGE sql IMMUTABLE STRICT;
-COMMENT ON FUNCTION jsonb_delete_left(jsonb, text[]) IS 'delete key in second argument from first argument';
+COMMENT ON FUNCTION jsonb_delete_left(jsonb, text) IS 'delete key in second argument from first argument';
 
 CREATE OPERATOR - ( PROCEDURE = jsonb_delete_left, LEFTARG = jsonb, RIGHTARG = text);
-COMMENT ON OPERATOR - (jsonb, text[]) IS 'delete key from left operand';
+COMMENT ON OPERATOR - (jsonb, text) IS 'delete key from left operand';
 
 --
 
