@@ -18,7 +18,7 @@ SET
 CREATE FUNCTION
 COMMENT
 CREATE OPERATOR
-psql:pg_jsonb_delete_op.sql:23: ERROR:  operator does not exist: jsonb - text[]
+COMMENT
 CREATE FUNCTION
 COMMENT
 CREATE OPERATOR
