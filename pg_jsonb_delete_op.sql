@@ -12,7 +12,7 @@ $BODY$
         (
             SELECT ('{' || string_agg(to_json(key) || ':' || value, ',') || '}')
             FROM jsonb_each(a)
-            WHERE NOT to_json(key || ':' || value)::jsonb ? b
+            WHERE NOT ('{"' || key || '":' || value || '}')::jsonb ? b
         )
     , '{}')::jsonb;
 $BODY$
@@ -31,7 +31,7 @@ $BODY$
         (
             SELECT ('{' || string_agg(to_json(key) || ':' || value, ',') || '}')
             FROM jsonb_each(a)
-            WHERE NOT to_json(key || ':' || value)::jsonb ?| b
+            WHERE NOT ('{"' || key || '":' || value || '}')::jsonb ?| b
         )
     , '{}')::jsonb;
 $BODY$
@@ -50,7 +50,7 @@ $BODY$
         (
             SELECT ('{' || string_agg(to_json(key) || ':' || value, ',') || '}')
             FROM jsonb_each(a)
-            WHERE NOT to_json(key || ':' || value)::jsonb <@ b
+            WHERE NOT ('{"' || key || '":' || value || '}')::jsonb <@ b
         )
     , '{}')::jsonb;
 $BODY$
