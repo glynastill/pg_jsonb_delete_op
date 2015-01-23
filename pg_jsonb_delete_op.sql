@@ -50,7 +50,7 @@ $BODY$
         (
             SELECT ('{' || string_agg(to_json(key) || ':' || value, ',') || '}')
             FROM jsonb_each(a)
-            WHERE NOT ('{' || to_json(key) || ':' || value || '}')::jsonb <@ b
+            WHERE NOT ('{' || to_json(key)::text || ':' || value || '}')::jsonb <@ b
         )
     , '{}')::jsonb;
 $BODY$
