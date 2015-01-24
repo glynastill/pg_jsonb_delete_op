@@ -12,7 +12,7 @@ $BODY$
         (
             SELECT ('{' || string_agg(to_json(key) || ':' || value, ',') || '}')
             FROM jsonb_each(a)
-            WHERE NOT to_json(key)::jsonb ? b
+            WHERE key <> b
         )
     , '{}')::jsonb;
 $BODY$
